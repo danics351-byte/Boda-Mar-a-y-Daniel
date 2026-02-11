@@ -1,11 +1,285 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Nuestra Boda</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boda de Daniel & María</title>
+
+<!-- Fuente elegante -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fffaf0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Cabecera */
+header {
+    position: relative;
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1532392121046-6b9ee8d53e48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTc3fDB8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nJTIwYm9kYSUyMG1hbGxvcmNhfGVufDB8fHx8MTY5NjU3MDYwNQ&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4em;
+    z-index: 1;
+}
+
+header p {
+    font-size: 1.5em;
+    margin-top: 10px;
+    z-index: 1;
+}
+
+/* Secciones */
+section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    text-align: center;
+    color: #d6336c;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+}
+
+/* Imágenes de sección */
+.location img {
+    width: 100%;
+    max-width: 700px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.5s;
+}
+
+.location img:hover {
+    transform: scale(1.05);
+}
+
+/* Detalles */
+.details {
+    background-color: #ffe4e1;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.details p {
+    font-size: 1.2em;
+    margin: 12px 0;
+}
+
+/* Botones mapa */
+.map-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #d6336c;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.map-button:hover {
+    background-color: #b02a5b;
+}
+
+/* RSVP */
+.rsvp-form {
+    background-color: #ffe4e1;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.rsvp-form label {
+    font-weight: bold;
+}
+
+.rsvp-form input, .rsvp-form select, .rsvp-form button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 1em;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.rsvp-form button {
+    background-color: #d6336c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.rsvp-form button:hover {
+    background-color: #b02a5b;
+}
+
+/* Maps iframe */
+iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f8f8f8;
+    color: #555;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    header h1 { font-size: 3em; }
+    h2 { font-size: 2em; }
+}
+</style>
 </head>
 <body>
-    <h1>¡Nos casamos!</h1>
-    <p>Bienvenidos a nuestra web 💍</p>
+
+<!-- Cabecera -->
+<header>
+    <h1>Daniel & María</h1>
+    <p>28 de Noviembre - Mallorca</p>
+</header>
+
+<!-- Ceremonia -->
+<section class="ceremony">
+    <h2>Ceremonia</h2>
+    <div class="location">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Sant_Mar%C3%A7al_Church_Marratx%C3%AD_Mallorca.jpg" alt="Iglesia de Sant Marçal">
+    </div>
+    <div class="details">
+        <p><strong>Lugar:</strong> Iglesia de Sant Marçal, Sa Cabaneta, Marratxí</p>
+        <p><strong>Hora:</strong> 12:00</p>
+        <a href="https://goo.gl/maps/6MkC7HpqzPGvS9rP9" target="_blank" class="map-button">Ver en Google Maps</a>
+    </div>
+</section>
+
+<!-- Banquete -->
+<section class="reception">
+    <h2>Celebración</h2>
+    <div class="location">
+        <img src="https://cache.marriott.com/content/dam/marriott-renditions/PMILC/pmilc-baleares-7423-hor-clsc.jpg?downsize=364px%3A%2A&interpolation=progressive-bilinear&output-quality=70" alt="Castillo Hotel Son Vida">
+    </div>
+    <div class="details">
+        <p><strong>Lugar:</strong> Castillo Hotel Son Vida</p>
+        <p><strong>Hora:</strong> 15:30</p>
+        <a href="https://goo.gl/maps/nWwA9q8gHfQ2" target="_blank" class="map-button">Ver en Google Maps</a>
+    </div>
+</section>
+
+<!-- Cómo llegar -->
+<section class="directions">
+    <h2>Cómo llegar</h2>
+    <p>Te mostramos un mapa con los dos lugares principales de la boda:</p>
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1zTL-H3R1XgFqO4kBnH3X8LzL-3w&ehbc=2E312F" allowfullscreen></iframe>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp">
+    <h2>Confirmación de asistencia (RSVP)</h2>
+    <div class="rsvp-form">
+        <form onsubmit="rsvpSubmit(event)">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" required>
+
+            <label for="attendance">¿Asistirás?</label>
+            <select id="attendance" required>
+                <option value="">Selecciona</option>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="guests">Número de acompañantes:</label>
+            <input type="number" id="guests" min="0" value="0">
+
+            <button type="submit">Enviar RSVP</button>
+        </form>
+        <p id="rsvp-message" style="text-align:center; font-weight:bold; color:#d6336c;"></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    &copy; 2026 Daniel & María - ¡Gracias por compartir este día con nosotros! 💍
+</footer>
+
+<script>
+// Animación de secciones al hacer scroll
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
+
+sections.forEach(section => observer.observe(section));
+
+// RSVP
+function rsvpSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const attendance = document.getElementById('attendance').value;
+    const guests = document.getElementById('guests').value;
+    const message = `Gracias ${name}, has confirmado: ${attendance} con ${guests} acompañante(s).`;
+    document.getElementById('rsvp-message').textContent = message;
+    event.target.reset();
+}
+</script>
+
 </body>
 </html>
