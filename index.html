@@ -5,16 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boda de Daniel & María</title>
 
-<!-- Fuente elegante -->
+<!-- Fuentes elegantes -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
 
 <style>
 /* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* Body */
 body {
@@ -24,11 +20,11 @@ body {
     line-height: 1.6;
 }
 
-/* Cabecera */
+/* Cabecera con imagen de Mallorca */
 header {
     position: relative;
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1532392121046-6b9ee8d53e48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTc3fDB8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nJTIwYm9kYSUyMG1hbGxvcmNhfGVufDB8fHx8MTY5NjU3MDYwNQ&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920') no-repeat center center/cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,7 +76,7 @@ h2 {
     font-size: 2.5em;
 }
 
-/* Imágenes de sección */
+/* Imágenes */
 .location img {
     width: 100%;
     max-width: 700px;
@@ -211,7 +207,7 @@ footer {
 <section class="reception">
     <h2>Celebración</h2>
     <div class="location">
-        <img src="https://cache.marriott.com/content/dam/marriott-renditions/PMILC/pmilc-baleares-7423-hor-clsc.jpg?downsize=364px%3A%2A&interpolation=progressive-bilinear&output-quality=70" alt="Castillo Hotel Son Vida">
+        <img src="https://images.unsplash.com/photo-1598514982888-8f7d9d8f83d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920" alt="Castillo Hotel Son Vida">
     </div>
     <div class="details">
         <p><strong>Lugar:</strong> Castillo Hotel Son Vida</p>
@@ -224,12 +220,12 @@ footer {
 <section class="directions">
     <h2>Cómo llegar</h2>
     <p>Te mostramos un mapa con los dos lugares principales de la boda:</p>
-    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1zTL-H3R1XgFqO4kBnH3X8LzL-3w&ehbc=2E312F" allowfullscreen></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3032.123456789!2d2.642!3d39.662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m14!1m8!1s0x12979d5!2sIglesia%20de%20Sant%20Mar%C3%A7al!3m4!1s0x12979d9!2sCastillo%20Hotel%20Son%20Vida!3m2!1i1024!2i768!4f13.1!3m4!1s0x12979d5!2sIglesia%20de%20Sant%20Mar%C3%A7al!5e0!3m2!1ses!2ses!4v1679523123456!5m2!1ses!2ses" allowfullscreen></iframe>
 </section>
 
-<!-- RSVP -->
+<!-- Confirmación de asistencia -->
 <section class="rsvp">
-    <h2>Confirmación de asistencia (RSVP)</h2>
+    <h2>Confirmación de asistencia</h2>
     <div class="rsvp-form">
         <form onsubmit="rsvpSubmit(event)">
             <label for="name">Nombre:</label>
@@ -245,7 +241,7 @@ footer {
             <label for="guests">Número de acompañantes:</label>
             <input type="number" id="guests" min="0" value="0">
 
-            <button type="submit">Enviar RSVP</button>
+            <button type="submit">Enviar</button>
         </form>
         <p id="rsvp-message" style="text-align:center; font-weight:bold; color:#d6336c;"></p>
     </div>
@@ -266,7 +262,6 @@ const observer = new IntersectionObserver(entries => {
         }
     });
 }, { threshold: 0.2 });
-
 sections.forEach(section => observer.observe(section));
 
 // RSVP
