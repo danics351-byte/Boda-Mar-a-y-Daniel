@@ -9,7 +9,13 @@
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto', sans-serif; line-height:1.6; background-color:#fffaf0; color:#333; }
+body { 
+    font-family:'Roboto', sans-serif; 
+    line-height:1.6; 
+    background-color:#fffaf0; 
+    color:#333;
+    scroll-behavior:smooth;
+}
 
 /* Cabecera */
 header {
@@ -20,163 +26,147 @@ header {
     align-items: center;
     text-align: center;
     color: white;
-    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920') no-repeat center center/cover;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
 }
 
 header::after {
     content:'';
-    position:absolute; top:0; left:0; width:100%; height:100%;
-    background-color: rgba(0,0,0,0.3); /* overlay suave */
+    position:absolute; 
+    inset:0;
+    background-color: rgba(0,0,0,0.35);
+    z-index:1;
 }
 
-header h1 { font-family:'Playfair Display', serif; font-size:4em; z-index:1; }
-header p { font-size:1.5em; margin-top:10px; z-index:1; }
+header div {
+    position:relative;
+    z-index:2;
+}
 
-/* Secciones hero (iglesia y celebración) */
+header h1 { font-family:'Playfair Display', serif; font-size:4em; }
+header p { font-size:1.5em; margin-top:10px; }
+
+/* Hero Sections */
 .section-hero {
     position: relative;
-    height: 80vh;
+    height: 85vh;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
     color:white;
-    margin-bottom:0;
+    opacity:0;
+    transform:translateY(40px);
+    transition: all 1s ease;
 }
 
 .section-hero::after {
     content:'';
-    position:absolute; top:0; left:0; width:100%; height:100%;
-    background-color: rgba(0,0,0,0.35); /* overlay ligero */
+    position:absolute;
+    inset:0;
+    background-color: rgba(0,0,0,0.35);
+    z-index:1;
 }
 
-.section-hero h2 { font-family:'Playfair Display', serif; font-size:3em; z-index:1; }
-.section-hero p { font-size:1.3em; margin:10px 0; z-index:1; }
+.section-hero > div {
+    position:relative;
+    z-index:2;
+}
 
-/* Imágenes de mapa estáticas */
+.section-hero h2 { font-family:'Playfair Display', serif; font-size:3em; }
+.section-hero p { font-size:1.2em; margin:10px 0; }
+
+/* Map */
 .map-image {
     width:100%;
     max-width:600px;
     margin:20px auto;
     display:block;
     border-radius:12px;
+    transition:0.3s;
+}
+.map-image:hover {
+    transform:scale(1.03);
 }
 
-/* Sección final azul */
+/* Sección final */
 section.final {
     background-color:#4a90e2;
     color:white;
     padding:80px 20px;
     max-width:1000px;
-    margin:0 auto;
+    margin:60px auto;
     border-radius:12px;
     opacity:0;
-    transform:translateY(30px);
+    transform:translateY(40px);
     transition: all 1s ease;
 }
 
+.visible { 
+    opacity:1 !important; 
+    transform:translateY(0) !important; 
+}
+
 /* RSVP */
-.rsvp-form { background-color:#3c7dcf; padding:30px; border-radius:12px; max-width:600px; margin:0 auto; }
+.rsvp-form { 
+    background-color:#3c7dcf; 
+    padding:30px; 
+    border-radius:12px; 
+    max-width:600px; 
+    margin:0 auto; 
+}
+
 .rsvp-form label { font-weight:bold; }
-.rsvp-form input, .rsvp-form select, .rsvp-form button { display:block; width:100%; padding:12px; margin:10px 0; font-size:1em; border-radius:6px; border:1px solid #ccc; }
-.rsvp-form input, .rsvp-form select { background-color:white; color:black; }
-.rsvp-form button { background-color:#d6336c; color:white; border:none; cursor:pointer; font-weight:bold; transition:0.3s; }
+
+.rsvp-form input, 
+.rsvp-form select, 
+.rsvp-form button { 
+    display:block; 
+    width:100%; 
+    padding:12px; 
+    margin:10px 0; 
+    font-size:1em; 
+    border-radius:6px; 
+    border:1px solid #ccc; 
+}
+
+.rsvp-form button { 
+    background-color:#d6336c; 
+    color:white; 
+    border:none; 
+    cursor:pointer; 
+    font-weight:bold; 
+    transition:0.3s; 
+}
+
 .rsvp-form button:hover { background-color:#b02a5b; }
 
 /* Footer */
-footer { text-align:center; padding:40px 20px; background-color:#f8f8f8; color:#555; }
-
-/* Animación scroll */
-section.visible { opacity:1; transform:translateY(0); }
+footer { 
+    text-align:center; 
+    padding:40px 20px; 
+    background-color:#f8f8f8; 
+    color:#555; 
+}
 
 /* Responsive */
 @media(max-width:768px){
     header h1 { font-size:3em; }
-    header p { font-size:1.2em; }
     .section-hero h2 { font-size:2.2em; }
-    .section-hero p { font-size:1em; }
 }
 </style>
 </head>
 <body>
 
-<!-- Cabecera -->
 <header>
     <div>
         <h1>Daniel & María</h1>
         <p>28 de Noviembre - Mallorca</p>
+        <p id="countdown" style="margin-top:20px; font-size:1.3em;"></p>
     </div>
 </header>
 
-<!-- Sección Iglesia -->
-<section class="section-hero" style="background:url('https://upload.wikimedia.org/wikipedia/commons/5/5e/Sant_Mar%C3%A7al_Church_Marratx%C3%AD_Mallorca.jpg') no-repeat center center/cover;">
+<!-- Ceremonia -->
+<section class="section-hero" style="background:url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;">
     <div>
         <h2>Ceremonia</h2>
-        <p>Iglesia de Sant Marçal, Sa Cabaneta, Marratxí</p>
-        <p><strong>Hora:</strong> 12:00</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Mallorca_map_location_icon.svg/600px-Mallorca_map_location_icon.svg.png" alt="Ubicación Sant Marçal en Mallorca" class="map-image">
-    </div>
-</section>
-
-<!-- Sección Celebración -->
-<section class="section-hero" style="background:url('https://images.unsplash.com/photo-1563720221224-0f0e0d29c57b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920') no-repeat center center/cover;">
-    <div>
-        <h2>Celebración</h2>
-        <p>Castillo Hotel Son Vida</p>
-        <p><strong>Hora:</strong> 15:30</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Mallorca_map_location_icon.svg/600px-Mallorca_map_location_icon.svg.png" alt="Ubicación Castillo Hotel Son Vida en Mallorca" class="map-image">
-    </div>
-</section>
-
-<!-- Sección final RSVP -->
-<section class="final">
-    <h2>Confirmación de asistencia</h2>
-    <div class="rsvp-form">
-        <form onsubmit="rsvpSubmit(event)">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" required>
-
-            <label for="attendance">¿Asistirás?</label>
-            <select id="attendance" required>
-                <option value="">Selecciona</option>
-                <option value="Sí">Sí</option>
-                <option value="No">No</option>
-            </select>
-
-            <label for="guests">Número de acompañantes:</label>
-            <input type="number" id="guests" min="0" value="0">
-
-            <button type="submit">Enviar</button>
-        </form>
-        <p id="rsvp-message" style="text-align:center; font-weight:bold; color:#ffdd57;"></p>
-    </div>
-</section>
-
-<footer>
-    &copy; 2026 Daniel & María - ¡Gracias por compartir este día con nosotros! 💍
-</footer>
-
-<script>
-// Animación scroll
-const sections = document.querySelectorAll('.final');
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-    });
-}, { threshold: 0.2 });
-sections.forEach(section => observer.observe(section));
-
-// RSVP
-function rsvpSubmit(event){
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const attendance = document.getElementById('attendance').value;
-    const guests = document.getElementById('guests').value;
-    const message = `Gracias ${name}, has confirmado: ${attendance} con ${guests} acompañante(s).`;
-    document.getElementById('rsvp-message').textContent = message;
-    event.target.reset();
-}
-</script>
-
-</body>
-</html>
+        <p>:contentReference[oaicite:0]{index=0}
