@@ -1,133 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Daniel & María</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Daniel & María</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #FDFCF8;
-      --text: #1a1a1a;
-      --accent: #000000;
-    }
+<style>
+:root {
+  --bg: #f5f1ea;
+  --dark: #1f1f1f;
+  --accent: #2e2e2e;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  scroll-behavior: smooth;
+}
 
-    header {
-      height: 90vh;
-      background: url('foto-principal.jpg') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(245,241,234,0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  padding: 1.2rem 0;
+  z-index: 1000;
+}
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      letter-spacing: 2px;
-    }
+nav a {
+  margin: 0 2rem;
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
 
-    header p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-    }
+nav a:hover {
+  opacity: 0.6;
+}
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--bg);
-      display: flex;
-      justify-content: center;
-      padding: 1rem 0;
-      border-bottom: 1px solid #eee;
-      z-index: 1000;
-    }
+header {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url('foto-principal.jpg') center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  padding:0 2rem;
+}
 
-    nav a {
-      margin: 0 1.5rem;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      transition: opacity 0.3s;
-    }
+header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  animation: fadeUp 1.5s ease forwards;
+}
 
-    nav a:hover {
-      opacity: 0.6;
-    }
+header p {
+  margin-top:1rem;
+  font-size:1.2rem;
+  letter-spacing:2px;
+  animation: fadeUp 2s ease forwards;
+}
 
-    section {
-      max-width: 800px;
-      margin: 6rem auto;
-      padding: 0 2rem;
-      text-align: center;
-    }
+section {
+  max-width: 900px;
+  margin: 8rem auto;
+  padding: 0 2rem;
+  text-align:center;
+}
 
-    section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
+section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
 
-    .date {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-    }
+section h2::after {
+  content:"";
+  width:60px;
+  height:1px;
+  background:var(--dark);
+  display:block;
+  margin:1rem auto 0;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.8rem 2rem;
-      border: 1px solid var(--accent);
-      text-decoration: none;
-      color: var(--accent);
-      transition: all 0.3s ease;
-    }
+section p {
+  font-size:1.1rem;
+  line-height:1.8;
+  opacity:0.85;
+}
 
-    .btn:hover {
-      background: var(--accent);
-      color: white;
-    }
+.btn {
+  display:inline-block;
+  margin-top:3rem;
+  padding:1rem 3rem;
+  border:1px solid var(--dark);
+  text-decoration:none;
+  color:var(--dark);
+  letter-spacing:1px;
+  transition:0.4s;
+}
 
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      font-size: 0.9rem;
-      opacity: 0.6;
-    }
+.btn:hover {
+  background:var(--dark);
+  color:white;
+}
 
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
+footer {
+  text-align:center;
+  padding:4rem 1rem;
+  font-size:0.8rem;
+  opacity:0.6;
+}
 
-      nav {
-        flex-wrap: wrap;
-      }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
 
-      nav a {
-        margin: 0.5rem 1rem;
-      }
-    }
-  </style>
+@media(max-width:768px){
+  header h1 { font-size:2.5rem; }
+  section h2 { font-size:2rem; }
+  nav a { margin:0 1rem; font-size:0.75rem; }
+}
+</style>
 </head>
 
 <body>
@@ -141,16 +153,15 @@
 
 <header id="inicio">
   <h1>Daniel & María</h1>
-  <p>¡Nos casamos!</p>
-  <p class="date">28 Noviembre 2026 · Palma de Mallorca</p>
+  <p>28 Noviembre 2026 · Palma de Mallorca</p>
 </header>
 
 <section id="historia">
   <h2>Bienvenidos a nuestra boda</h2>
   <p>
-    ¡Que sí! ¡Nos casamos! Estamos súper felices y queremos compartir contigo
-    todo nuestro amor. Hemos preparado este espacio para que tengas toda la
-    información del gran día y puedas acompañarnos en esta aventura.
+    ¡Que sí! ¡Nos casamos! Estamos súper felices y queremos compartir contigo todo nuestro amor.
+    Hemos preparado este espacio para que tengas toda la información del gran día
+    y puedas acompañarnos en esta aventura.
   </p>
 </section>
 
@@ -160,7 +171,7 @@
     Por favor, confírmanos lo antes posible si podrás acompañarnos.
     Nos ayudará muchísimo en la organización.
   </p>
-  <a class="btn" href="https://forms.gle/TU_FORMULARIO">Confirmar asistencia</a>
+  <a class="btn" href="#">Confirmar asistencia</a>
 </section>
 
 <section id="contacto">
@@ -168,7 +179,7 @@
   <p>
     Si tienes cualquier duda puedes escribirnos directamente.
   </p>
-  <p><strong>Email:</strong> tuemail@ejemplo.com</p>
+  <p style="margin-top:1rem;"><strong>Email:</strong> tuemail@ejemplo.com</p>
 </section>
 
 <footer>
