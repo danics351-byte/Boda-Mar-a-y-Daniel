@@ -9,6 +9,7 @@
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
+
 body { 
     font-family:'Roboto', sans-serif; 
     line-height:1.6; 
@@ -17,45 +18,50 @@ body {
     scroll-behavior:smooth;
 }
 
-/* Cabecera */
+/* HEADER */
 header {
     position: relative;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-}
-
-header::after {
-    content:'';
-    position:absolute; 
-    inset:0;
-    background-color: rgba(0,0,0,0.35);
-    z-index:1;
-}
-
-header div {
-    position:relative;
-    z-index:2;
-}
-
-header h1 { font-family:'Playfair Display', serif; font-size:4em; }
-header p { font-size:1.5em; margin-top:10px; }
-
-/* Hero Sections */
-.section-hero {
-    position: relative;
-    height: 85vh;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
     color:white;
-    opacity:0;
-    transform:translateY(40px);
+    background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+}
+
+header::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+    z-index:1;
+}
+
+header .content {
+    position:relative;
+    z-index:2;
+}
+
+header h1 {
+    font-family:'Playfair Display', serif;
+    font-size:4em;
+}
+
+header p {
+    font-size:1.4em;
+    margin-top:10px;
+}
+
+/* SECCIONES */
+.section-hero {
+    position:relative;
+    height:85vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
     transition: all 1s ease;
 }
 
@@ -63,19 +69,37 @@ header p { font-size:1.5em; margin-top:10px; }
     content:'';
     position:absolute;
     inset:0;
-    background-color: rgba(0,0,0,0.35);
+    background:rgba(0,0,0,0.35);
     z-index:1;
 }
 
-.section-hero > div {
+.section-hero .content {
     position:relative;
     z-index:2;
 }
 
-.section-hero h2 { font-family:'Playfair Display', serif; font-size:3em; }
-.section-hero p { font-size:1.2em; margin:10px 0; }
+.section-hero h2 {
+    font-family:'Playfair Display', serif;
+    font-size:3em;
+}
 
-/* Map */
+.section-hero p {
+    font-size:1.2em;
+    margin:10px 0;
+}
+
+/* Animaciones */
+.animate {
+    opacity:0;
+    transform:translateY(40px);
+}
+
+.visible {
+    opacity:1 !important;
+    transform:translateY(0) !important;
+}
+
+/* MAPA */
 .map-image {
     width:100%;
     max-width:600px;
@@ -84,71 +108,62 @@ header p { font-size:1.5em; margin-top:10px; }
     border-radius:12px;
     transition:0.3s;
 }
+
 .map-image:hover {
     transform:scale(1.03);
 }
 
-/* Sección final */
+/* RSVP */
 section.final {
-    background-color:#4a90e2;
+    background:#4a90e2;
     color:white;
     padding:80px 20px;
     max-width:1000px;
     margin:60px auto;
     border-radius:12px;
-    opacity:0;
-    transform:translateY(40px);
     transition: all 1s ease;
 }
 
-.visible { 
-    opacity:1 !important; 
-    transform:translateY(0) !important; 
+.rsvp-form {
+    background:#3c7dcf;
+    padding:30px;
+    border-radius:12px;
+    max-width:600px;
+    margin:0 auto;
 }
 
-/* RSVP */
-.rsvp-form { 
-    background-color:#3c7dcf; 
-    padding:30px; 
-    border-radius:12px; 
-    max-width:600px; 
-    margin:0 auto; 
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form button {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:6px;
+    border:none;
+    font-size:1em;
 }
 
-.rsvp-form label { font-weight:bold; }
-
-.rsvp-form input, 
-.rsvp-form select, 
-.rsvp-form button { 
-    display:block; 
-    width:100%; 
-    padding:12px; 
-    margin:10px 0; 
-    font-size:1em; 
-    border-radius:6px; 
-    border:1px solid #ccc; 
+.rsvp-form button {
+    background:#d6336c;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
 }
 
-.rsvp-form button { 
-    background-color:#d6336c; 
-    color:white; 
-    border:none; 
-    cursor:pointer; 
-    font-weight:bold; 
-    transition:0.3s; 
+.rsvp-form button:hover {
+    background:#b02a5b;
 }
 
-.rsvp-form button:hover { background-color:#b02a5b; }
-
-/* Footer */
-footer { 
-    text-align:center; 
-    padding:40px 20px; 
-    background-color:#f8f8f8; 
-    color:#555; 
+/* FOOTER */
+footer {
+    text-align:center;
+    padding:40px;
+    background:#f8f8f8;
+    color:#555;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media(max-width:768px){
     header h1 { font-size:3em; }
     .section-hero h2 { font-size:2.2em; }
@@ -158,15 +173,94 @@ footer {
 <body>
 
 <header>
-    <div>
+    <div class="content">
         <h1>Daniel & María</h1>
         <p>28 de Noviembre - Mallorca</p>
-        <p id="countdown" style="margin-top:20px; font-size:1.3em;"></p>
+        <p id="countdown" style="margin-top:20px;"></p>
     </div>
 </header>
 
-<!-- Ceremonia -->
+<!-- CEREMONIA -->
 <section class="section-hero" style="background:url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;">
-    <div>
+    <div class="content">
         <h2>Ceremonia</h2>
-        <p>:contentReference[oaicite:0]{index=0}
+        <p>Iglesia de Sant Marçal</p>
+        <p><strong>Hora:</strong> 12:00</p>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+de+Sant+Marçal+Marratxí" target="_blank">
+            <img src="https://via.placeholder.com/600x300?text=Ver+Ubicación+en+Google+Maps" class="map-image" alt="Mapa ceremonia">
+        </a>
+    </div>
+</section>
+
+<!-- CELEBRACIÓN -->
+<section class="section-hero" style="background:url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;">
+    <div class="content">
+        <h2>Celebración</h2>
+        <p>Castillo Hotel Son Vida</p>
+        <p><strong>Hora:</strong> 15:30</p>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=Castillo+Hotel+Son+Vida+Mallorca" target="_blank">
+            <img src="https://via.placeholder.com/600x300?text=Ver+Ubicación+en+Google+Maps" class="map-image" alt="Mapa celebración">
+        </a>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section class="final">
+    <h2 style="text-align:center;">Confirmación de asistencia</h2>
+    <hr style="width:60px; margin:30px auto; border:2px solid white;">
+    <div class="rsvp-form">
+        <form>
+            <input type="text" placeholder="Nombre" required>
+            <select required>
+                <option value="">¿Asistirás?</option>
+                <option>Sí</option>
+                <option>No</option>
+            </select>
+            <input type="number" min="0" value="0" placeholder="Acompañantes">
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 Daniel & María - ¡Gracias por compartir este día con nosotros! 💍
+</footer>
+
+<script>
+// Animaciones seguras
+if ('IntersectionObserver' in window) {
+
+    const sections = document.querySelectorAll('.section-hero, .final');
+
+    sections.forEach(section => section.classList.add('animate'));
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+// Cuenta atrás
+const weddingDate = new Date("Nov 28, 2026 12:00:00").getTime();
+const countdown = document.getElementById("countdown");
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    countdown.innerHTML = `Faltan ${days} días y ${hours} horas 💍`;
+}, 1000);
+</script>
+
+</body>
+</html>
