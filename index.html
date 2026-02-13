@@ -1,266 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boda de Daniel & María</title>
+  <meta charset="UTF-8">
+  <title>Daniel & María</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
+  <style>
+    :root {
+      --bg: #FDFCF8;
+      --text: #1a1a1a;
+      --accent: #000000;
+    }
 
-body { 
-    font-family:'Roboto', sans-serif; 
-    line-height:1.6; 
-    background-color:#fffaf0; 
-    color:#333;
-    scroll-behavior:smooth;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* HEADER */
-header {
-    position: relative;
-    height: 100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-    background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-header::after {
-    content:'';
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.35);
-    z-index:1;
-}
+    header {
+      height: 90vh;
+      background: url('foto-principal.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
 
-header .content {
-    position:relative;
-    z-index:2;
-}
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+    }
 
-header h1 {
-    font-family:'Playfair Display', serif;
-    font-size:4em;
-}
+    header p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
 
-header p {
-    font-size:1.4em;
-    margin-top:10px;
-}
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+      z-index: 1000;
+    }
 
-/* SECCIONES */
-.section-hero {
-    position:relative;
-    height:85vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-    transition: all 1s ease;
-}
+    nav a {
+      margin: 0 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
 
-.section-hero::after {
-    content:'';
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.35);
-    z-index:1;
-}
+    nav a:hover {
+      opacity: 0.6;
+    }
 
-.section-hero .content {
-    position:relative;
-    z-index:2;
-}
+    section {
+      max-width: 800px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
 
-.section-hero h2 {
-    font-family:'Playfair Display', serif;
-    font-size:3em;
-}
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
 
-.section-hero p {
-    font-size:1.2em;
-    margin:10px 0;
-}
+    .date {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
 
-/* Animaciones */
-.animate {
-    opacity:0;
-    transform:translateY(40px);
-}
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--accent);
+      text-decoration: none;
+      color: var(--accent);
+      transition: all 0.3s ease;
+    }
 
-.visible {
-    opacity:1 !important;
-    transform:translateY(0) !important;
-}
+    .btn:hover {
+      background: var(--accent);
+      color: white;
+    }
 
-/* MAPA */
-.map-image {
-    width:100%;
-    max-width:600px;
-    margin:20px auto;
-    display:block;
-    border-radius:12px;
-    transition:0.3s;
-}
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
 
-.map-image:hover {
-    transform:scale(1.03);
-}
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
 
-/* RSVP */
-section.final {
-    background:#4a90e2;
-    color:white;
-    padding:80px 20px;
-    max-width:1000px;
-    margin:60px auto;
-    border-radius:12px;
-    transition: all 1s ease;
-}
+      nav {
+        flex-wrap: wrap;
+      }
 
-.rsvp-form {
-    background:#3c7dcf;
-    padding:30px;
-    border-radius:12px;
-    max-width:600px;
-    margin:0 auto;
-}
-
-.rsvp-form input,
-.rsvp-form select,
-.rsvp-form button {
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border-radius:6px;
-    border:none;
-    font-size:1em;
-}
-
-.rsvp-form button {
-    background:#d6336c;
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.rsvp-form button:hover {
-    background:#b02a5b;
-}
-
-/* FOOTER */
-footer {
-    text-align:center;
-    padding:40px;
-    background:#f8f8f8;
-    color:#555;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    header h1 { font-size:3em; }
-    .section-hero h2 { font-size:2.2em; }
-}
-</style>
+      nav a {
+        margin: 0.5rem 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-    <div class="content">
-        <h1>Daniel & María</h1>
-        <p>28 de Noviembre - Mallorca</p>
-        <p id="countdown" style="margin-top:20px;"></p>
-    </div>
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#historia">Nuestra historia</a>
+  <a href="#asistencia">Asistencia</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<header id="inicio">
+  <h1>Daniel & María</h1>
+  <p>¡Nos casamos!</p>
+  <p class="date">28 Noviembre 2026 · Palma de Mallorca</p>
 </header>
 
-<!-- CEREMONIA -->
-<section class="section-hero" style="background:url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;">
-    <div class="content">
-        <h2>Ceremonia</h2>
-        <p>Iglesia de Sant Marçal</p>
-        <p><strong>Hora:</strong> 12:00</p>
-
-        <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+de+Sant+Marçal+Marratxí" target="_blank">
-            <img src="https://via.placeholder.com/600x300?text=Ver+Ubicación+en+Google+Maps" class="map-image" alt="Mapa ceremonia">
-        </a>
-    </div>
+<section id="historia">
+  <h2>Bienvenidos a nuestra boda</h2>
+  <p>
+    ¡Que sí! ¡Nos casamos! Estamos súper felices y queremos compartir contigo
+    todo nuestro amor. Hemos preparado este espacio para que tengas toda la
+    información del gran día y puedas acompañarnos en esta aventura.
+  </p>
 </section>
 
-<!-- CELEBRACIÓN -->
-<section class="section-hero" style="background:url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;">
-    <div class="content">
-        <h2>Celebración</h2>
-        <p>Castillo Hotel Son Vida</p>
-        <p><strong>Hora:</strong> 15:30</p>
-
-        <a href="https://www.google.com/maps/search/?api=1&query=Castillo+Hotel+Son+Vida+Mallorca" target="_blank">
-            <img src="https://via.placeholder.com/600x300?text=Ver+Ubicación+en+Google+Maps" class="map-image" alt="Mapa celebración">
-        </a>
-    </div>
+<section id="asistencia">
+  <h2>Confirma tu asistencia</h2>
+  <p>
+    Por favor, confírmanos lo antes posible si podrás acompañarnos.
+    Nos ayudará muchísimo en la organización.
+  </p>
+  <a class="btn" href="https://forms.gle/TU_FORMULARIO">Confirmar asistencia</a>
 </section>
 
-<!-- RSVP -->
-<section class="final">
-    <h2 style="text-align:center;">Confirmación de asistencia</h2>
-    <hr style="width:60px; margin:30px auto; border:2px solid white;">
-    <div class="rsvp-form">
-        <form>
-            <input type="text" placeholder="Nombre" required>
-            <select required>
-                <option value="">¿Asistirás?</option>
-                <option>Sí</option>
-                <option>No</option>
-            </select>
-            <input type="number" min="0" value="0" placeholder="Acompañantes">
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
+<section id="contacto">
+  <h2>Contacto</h2>
+  <p>
+    Si tienes cualquier duda puedes escribirnos directamente.
+  </p>
+  <p><strong>Email:</strong> tuemail@ejemplo.com</p>
 </section>
 
 <footer>
-    &copy; 2026 Daniel & María - ¡Gracias por compartir este día con nosotros! 💍
+  Hecho con amor ❤️
 </footer>
-
-<script>
-// Animaciones seguras
-if ('IntersectionObserver' in window) {
-
-    const sections = document.querySelectorAll('.section-hero, .final');
-
-    sections.forEach(section => section.classList.add('animate'));
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.2 });
-
-    sections.forEach(section => observer.observe(section));
-}
-
-// Cuenta atrás
-const weddingDate = new Date("Nov 28, 2026 12:00:00").getTime();
-const countdown = document.getElementById("countdown");
-
-setInterval(() => {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-    countdown.innerHTML = `Faltan ${days} días y ${hours} horas 💍`;
-}, 1000);
-</script>
 
 </body>
 </html>
